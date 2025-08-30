@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { usePathname } from "next/navigation" // Added import for usePathname
 import { Search, ShoppingCart, Heart, User, Menu, X, Contact, Podcast, MenuSquare, ShoppingBag, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,6 +14,7 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("")
   const { cartItems } = useCart()
   const { wishlistItems } = useWishlist()
+  const pathname = usePathname() // Get current pathname
 
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
   const wishlistItemCount = wishlistItems.length
@@ -29,14 +31,19 @@ export default function Header() {
           {/* Navigation */}
           <nav className={` ${isMenuOpen ? "block" : "hidden"} md:block`}>
             <div className="flex flex-col md:flex-row justify-center md:items-center space-y-2 md:space-y-0 md:space-x-8">
-              <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0">
+              <Link
+                href="/"
+                className={`text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0 ${pathname === "/" ? "text-primary font-bold" : ""
+                  }`}
+              >
                 <span className=" flex justify-center items-center gap-2">
                   <Home size={16} /> Home
                 </span>
               </Link>
               <Link
                 href="/products"
-                className="text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0"
+                className={`text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0 ${pathname === "/products" ? "text-primary font-bold" : ""
+                  }`}
               >
                 <span className=" flex justify-center items-center gap-2">
                   <ShoppingBag size={16} /> SHOP
@@ -44,7 +51,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/blogs"
-                className="text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0"
+                className={`text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0 ${pathname === "/blogs" ? "text-primary font-bold" : ""
+                  }`}
               >
                 <span className=" flex justify-center items-center gap-2">
                   <MenuSquare size={16} /> BLOG
@@ -52,7 +60,8 @@ export default function Header() {
               </Link>
               <Link
                 href="/contact"
-                className=" text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0"
+                className={`text-foreground hover:text-primary transition-colors font-medium py-2 md:py-0 ${pathname === "/contact" ? "text-primary font-bold" : ""
+                  }`}
               >
                 <span className=" flex justify-center items-center gap-2">
                   <Contact size={16} /> CONTACT
