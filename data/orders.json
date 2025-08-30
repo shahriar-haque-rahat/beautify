@@ -1,0 +1,23 @@
+[
+  {
+    "id": "order-001",
+    "userId": "demo@demo.com",
+    "items": [
+      {
+        "productId": "p-001",
+        "title": "Hydrating Face Serum",
+        "price": 49.99,
+        "quantity": 1
+      }
+    ],
+    "total": 49.99,
+    "status": "delivered",
+    "orderDate": "2025-01-10",
+    "shippingAddress": {
+      "name": "Demo User",
+      "address": "123 Demo Street",
+      "city": "Demo City",
+      "zipCode": "12345"
+    }
+  }
+]
