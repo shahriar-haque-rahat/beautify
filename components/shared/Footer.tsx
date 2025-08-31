@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
+import Logo from "./Logo"
 
 export default function Footer() {
   return (
@@ -8,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-primary">Beautify</h3>
-            <p className="text-muted-foreground mb-6 text-pretty">
+            <Logo />
+            <p className="text-muted-foreground my-6 text-pretty">
               Your trusted destination for beauty, lifestyle, and wellness products that enhance your natural glow.
             </p>
             <div className="flex space-x-3">

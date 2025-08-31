@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   title: "Beautify - Your Beauty & Lifestyle Destination",
   description: "Discover premium beauty, lifestyle, and wellness products at Beautify.",
   icons: {
-    icon: "/brand-hero.avif",
+    icon: "/logo.avif",
   },
 }
 
