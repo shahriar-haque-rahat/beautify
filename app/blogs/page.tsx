@@ -96,23 +96,26 @@ export default function BlogsPage() {
                   />
                 </div>
                 {/* Content */}
-                <div className="p-6 flex flex-col min-h-[250px]">
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
-                    <div className="flex items-center">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {new Date(blog.publishDate).toLocaleDateString()}
+                <section className="p-6 flex flex-col">
+                  <div className=" h-44 xl:h-40">
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
+                      <div className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {new Date(blog.publishDate).toLocaleDateString()}
+                      </div>
+                      <div className="flex items-center">
+                        <User className="h-4 w-4 mr-1" />
+                        {blog.author}
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <User className="h-4 w-4 mr-1" />
-                      {blog.author}
-                    </div>
+                    <h3 className="font-bold mb-3 text-lg text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                      <Link href={`/blogs/${blog.slug}`}>{blog.title}</Link>
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
+                      {blog.excerpt}
+                    </p>
                   </div>
-                  <h3 className="font-bold mb-3 text-lg text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                    <Link href={`/blogs/${blog.slug}`}>{blog.title}</Link>
-                  </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
-                    {blog.excerpt}
-                  </p>
+
                   <div className="mt-auto pt-4">
                     <Button
                       asChild
@@ -122,13 +125,13 @@ export default function BlogsPage() {
                       <Link href={`/blogs/${blog.slug}`}>Read More</Link>
                     </Button>
                   </div>
-                </div>
+                </section>
               </article>
             ))}
           </div>
         </section>
-        
-        <Newsletter/>
+
+        <Newsletter />
       </div>
     </div>
   )
