@@ -43,7 +43,7 @@ export default function HomePage() {
           </div>
           <div className="relative">
             <Image
-              src="/homepagebanner.jpg"
+              src="/homepagebanner.avif"
               alt="Beauty Hero"
               width={900}
               height={900}
@@ -84,7 +84,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center py-16">
           <div className="relative order-1 lg:order-none">
             <Image
-              src="/offersection.jpg"
+              src="/offersection.avif"
               alt="Discount Visual"
               width={900}
               height={900}
@@ -127,9 +127,9 @@ export default function HomePage() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { title: "Accessories", href: "/products?category=Accessories", image: "/accessories.png" },
-            { title: "Skincare", href: "/products?category=Skincare", image: "/skincare.png" },
-            { title: "Makeup", href: "/products?category=Makeup", image: "/makeup.png" },
+            { title: "Accessories", href: "/products?category=Accessories", image: "/accessories.avif" },
+            { title: "Skincare", href: "/products?category=Skincare", image: "/skincare.avif" },
+            { title: "Makeup", href: "/products?category=Makeup", image: "/makeup.avif" },
           ].map((c, i) => (
             <Link
               key={c.title}
@@ -158,7 +158,7 @@ export default function HomePage() {
           <div className="gap-4">
             <div className="relative">
               <Image
-                src="/newcollectionsection.jpg"
+                src="/newcollectionsection.avif"
                 alt="Coconut"
                 width={600}
                 height={300}
@@ -166,7 +166,7 @@ export default function HomePage() {
               />
               <div className="absolute right-20 -bottom-10 bg-white rounded-full p-2 shadow-lg">
                 <Image
-                  src="/newcollectionsection.jpg"
+                  src="/newcollectionsection.avif"
                   alt="Round detail"
                   width={120}
                   height={120}

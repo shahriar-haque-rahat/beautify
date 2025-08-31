@@ -96,7 +96,7 @@ export default function BlogsPage() {
                   />
                 </div>
                 {/* Content */}
-                <div className="p-6 flex flex-col">
+                <div className="p-6 flex flex-col min-h-[250px]">
                   <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-1" />
@@ -113,20 +113,22 @@ export default function BlogsPage() {
                   <p className="text-muted-foreground text-sm line-clamp-3 mb-6">
                     {blog.excerpt}
                   </p>
-
-                  <Button
-                    asChild
-                    size="sm"
-                    className="w-full ">
-                    <Link href={`/blogs/${blog.slug}`}>Read More</Link>
-                  </Button>
+                  <div className="mt-auto pt-4">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="w-full"
+                    >
+                      <Link href={`/blogs/${blog.slug}`}>Read More</Link>
+                    </Button>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </section>
         
-      <Newsletter/>
+        <Newsletter/>
       </div>
     </div>
   )
