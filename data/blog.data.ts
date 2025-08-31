@@ -30,12 +30,12 @@ Exfoliation helps remove dead skin cells and promotes cell turnover. Use a gentl
 Finally, consistency is everything. Stick to your routine and give products time to work. Most skincare ingredients take 4-6 weeks to show visible results, so patience is essential for achieving your skin goals.`,
     author: "Dr. Sarah Johnson",
     publishDate: "2025-01-20",
-    coverImage: "/skincare-routine-beauty.png",
+    coverImage: "/skincare-routine-beauty.avif",
     tags: ["skincare", "beauty", "tips", "glowing-skin"],
   },
   {
     id: "blog-002",
-    title: "The Ultimate Guide to Natural Beauty Products",
+    title: "Guide to Natural Beauty Products",
     slug: "ultimate-guide-natural-beauty-products",
     excerpt:
       "Learn about the benefits of natural beauty products and how to choose the best organic ingredients for your skin type.",
@@ -50,12 +50,12 @@ Natural doesn't always mean better for everyone, so it's important to patch test
 The environmental benefits of choosing natural beauty products are significant. These products typically use sustainable sourcing methods and biodegradable packaging, making them better for both your skin and the planet.`,
     author: "Emma Green",
     publishDate: "2025-01-18",
-    coverImage: "/natural-organic-beauty.png",
+    coverImage: "/natural-organic-beauty.avif",
     tags: ["natural", "organic", "beauty", "ingredients"],
   },
   {
     id: "blog-003",
-    title: "Creating the Perfect Evening Skincare Routine",
+    title: "Perfect Evening Skincare Routine",
     slug: "perfect-evening-skincare-routine",
     excerpt:
       "Transform your nighttime routine with these expert-approved steps for maximum skin repair and rejuvenation while you sleep.",
@@ -72,7 +72,7 @@ Finish with a nourishing night moisturizer that's richer than your daytime formu
 Consistency is key – stick to your routine for at least 4-6 weeks to see noticeable improvements in your skin's texture, tone, and overall appearance.`,
     author: "Dr. Michael Chen",
     publishDate: "2025-01-15",
-    coverImage: "/evening-skincare-routine-night.png",
+    coverImage: "/evening-skincare-routine-night.avif",
     tags: ["skincare", "routine", "evening", "night-care"],
   },
   {
@@ -94,7 +94,7 @@ Pay special attention to often-forgotten areas like your lips, hands, and neck. 
 Consider adding a humidifier to your bedroom to combat the dry indoor air from heating systems. This simple addition can make a significant difference in your skin's hydration levels overnight.`,
     author: "Lisa Martinez",
     publishDate: "2025-01-12",
-    coverImage: "/winter-skincare-cold-weather-beauty.png",
+    coverImage: "/winter-skincare-cold-weather-beauty.avif",
     tags: ["seasonal", "winter", "skincare", "hydration"],
   },
   {
@@ -118,7 +118,7 @@ Alpha hydroxy acids (AHAs) like glycolic and lactic acid work by dissolving the 
 The key to successful anti-aging skincare is consistency and patience. Most ingredients take 12-16 weeks to show significant results, so stick with your routine and protect your investment with daily sunscreen use.`,
     author: "Dr. Rachel Kim",
     publishDate: "2025-01-10",
-    coverImage: "/anti-aging-science-skincare-ingredients.png",
+    coverImage: "/anti-aging-science-skincare-ingredients.avif",
     tags: ["anti-aging", "science", "ingredients", "skincare"],
   },
   {
@@ -142,7 +142,7 @@ Monochromatic makeup, where you use similar shades across eyes, cheeks, and lips
 Don't forget about skincare as makeup – products that blur the line between skincare and cosmetics are increasingly popular. Tinted serums, skin tints, and treatment foundations offer coverage while caring for your skin.`,
     author: "Sofia Rodriguez",
     publishDate: "2025-01-08",
-    coverImage: "/makeup-trends-beauty-cosmetics.png",
+    coverImage: "/makeup-trends-beauty-cosmetics.avif",
     tags: ["makeup", "trends", "beauty", "cosmetics"],
   },
   {
@@ -168,7 +168,7 @@ Invest in quality tools that will last longer rather than disposable options. Hi
 Remember that sustainable beauty is a journey, not a destination. Small changes in your routine can make a significant impact over time, so start where you can and gradually incorporate more sustainable practices.`,
     author: "Green Beauty Expert",
     publishDate: "2025-01-05",
-    coverImage: "/sustainable-eco-friendly-beauty-routine.png",
+    coverImage: "/sustainable-eco-friendly-beauty-routine.avif",
     tags: ["sustainable", "eco-friendly", "beauty", "environment"],
   },
   {
@@ -192,7 +192,7 @@ The key to successful masking is consistency and choosing the right mask for you
 Always patch test new masks and follow the recommended usage instructions. More is not always better when it comes to face masks – overuse can lead to irritation or sensitivity.`,
     author: "Beauty Therapist Jane",
     publishDate: "2025-01-03",
-    coverImage: "/face-masks-skincare-beauty-treatment.png",
+    coverImage: "/face-masks-skincare-beauty-treatment.avif",
     tags: ["face-masks", "skincare", "beauty", "treatment"],
   },
   {
@@ -216,7 +216,7 @@ Your diet and lifestyle significantly impact hair health. Ensure you're getting 
 Be gentle with wet hair, as it's more vulnerable to damage. Use a wide-tooth comb to detangle, starting from the ends and working your way up. Avoid aggressive towel drying and opt for a microfiber towel or cotton t-shirt instead.`,
     author: "Hair Stylist Mark",
     publishDate: "2025-01-01",
-    coverImage: "/hair-care-healthy-shiny-hair.png",
+    coverImage: "/hair-care-healthy-shiny-hair.avif",
     tags: ["hair-care", "healthy-hair", "beauty", "hair-tips"],
   },
   {
@@ -242,7 +242,7 @@ End your beauty ritual with some mindfulness or meditation. This helps you inter
 Remember, self-care isn't selfish – it's necessary. Taking time to care for yourself helps you show up better for others and face life's challenges with renewed energy and confidence.`,
     author: "Accessories Coach Amy",
     publishDate: "2024-12-29",
-    coverImage: "/self-care-beauty-ritual-relaxation.png",
+    coverImage: "/self-care-beauty-ritual-relaxation.avif",
     tags: ["self-care", "beauty-ritual", "wellness", "relaxation"],
   },
 ]
