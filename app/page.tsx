@@ -128,8 +128,8 @@ export default function HomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {[
             { title: "Accessories", href: "/products?category=Accessories", image: "/accessories.avif" },
-            { title: "Skincare", href: "/products?category=Skincare", image: "/skincare.avif" },
             { title: "Makeup", href: "/products?category=Makeup", image: "/makeup.avif" },
+            { title: "Skincare", href: "/products?category=Skincare", image: "/skincare.avif" },
           ].map((c, i) => (
             <Link
               key={c.title}
