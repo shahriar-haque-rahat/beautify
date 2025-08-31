@@ -6,14 +6,16 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-muted/50 to-primary/5 mt-16 border-t border-primary/10">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 text-center md:text-start gap-8">
           {/* Company Info */}
           <div>
-            <Logo />
+<div className=" flex justify-center md:justify-start">
+              <Logo />
+</div>
             <p className="text-muted-foreground my-6 text-pretty">
               Your trusted destination for beauty, lifestyle, and wellness products that enhance your natural glow.
             </p>
-            <div className="flex space-x-3">
+            <div className="flex justify-center md:justify-start gap-6">
               <Link
                 href="#"
                 className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
