@@ -70,38 +70,40 @@ export default function ProductCard({ product }: ProductCardProps) {
         </Button>
       </div>
 
-      <div className="p-5">
-        <div className="mb-3">
-          <Badge variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">
-            {product.category}
-          </Badge>
-        </div>
+      <section className="p-5">
+        <div className=" h-40">
+          <div className="mb-3">
+            <Badge variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">
+              {product.category}
+            </Badge>
+          </div>
 
-        <Link href={`/products/${product.slug}`}>
-          <h3 className="font-semibold text-card-foreground hover:text-primary transition-colors line-clamp-2 mb-3 text-lg">
-            {product.title}
-          </h3>
-        </Link>
+          <Link href={`/products/${product.slug}`}>
+            <h3 className="font-semibold text-card-foreground hover:text-primary transition-colors line-clamp-2 mb-3 text-lg">
+              {product.title}
+            </h3>
+          </Link>
 
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-primary text-xl">${product.price.toFixed(2)}</span>
-            {product.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
-                ${product.originalPrice.toFixed(2)}
-              </span>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <span className="font-bold text-primary text-xl">${product.price.toFixed(2)}</span>
+              {product.originalPrice && (
+                <span className="text-sm text-muted-foreground line-through">
+                  ${product.originalPrice.toFixed(2)}
+                </span>
+              )}
+            </div>
+            {discountPercentage > 0 && (
+              <span className="text-sm font-medium text-primary">-{discountPercentage}%</span>
             )}
           </div>
-          {discountPercentage > 0 && (
-            <span className="text-sm font-medium text-primary">-{discountPercentage}%</span>
-          )}
         </div>
 
         <Button className="w-full" size="sm" onClick={handleAddToCart}>
           <ShoppingCart className="h-4 w-4 mr-2" />
           Add to Cart
         </Button>
-      </div>
+      </section>
     </div>
   )
 }
