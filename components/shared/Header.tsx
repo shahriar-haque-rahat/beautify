@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useCart } from "@/providers/CartContext"
 import { useWishlist } from "@/providers/WishlistContext"
+import Image from "next/image"
+import Logo from "./Logo"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,9 +26,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between gap-6 py-4">
-          <Link href="/" className="text-3xl font-bold text-primary hover:text-primary/80 transition-colors">
-            Beautify
-          </Link>
+          <Logo />
 
           {/* Navigation */}
           <nav className={` ${isMenuOpen ? "block" : "hidden"} md:block`}>
