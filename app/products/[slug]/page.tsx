@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Heart, ShoppingCart, Star, Truck, Shield, RotateCcw, X } from "lucide-react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
@@ -12,6 +13,7 @@ import ProductCard from "@/components/shared/ProductCard"
 import { products } from "@/data/product.data"
 import { useWishlist } from "@/providers/WishlistContext"
 import { useCart } from "@/providers/CartContext"
+import FadeIn from "@/components/shared/FadeIn"
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -70,7 +72,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Product Images */}
-          <div className="space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4"
+          >
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-white/80 backdrop-blur-sm border border-border/50">
               <Image
                 src={product.images[0] || "/placeholder.svg?height=600&width=600&query=beauty product detail"}
@@ -103,10 +110,15 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 ))}
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Product Info */}
-          <div className="space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-6"
+          >
             <div>
               <Badge variant="secondary" className="mb-3 bg-primary/10 text-primary border-primary/20">
                 {product.category}
@@ -207,18 +219,34 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 <p className="text-xs text-muted-foreground">30-day policy</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <section>
-            <h2 className="text-3xl font-bold mb-8 text-primary">Related Products</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <FadeIn>
+              <h2 className="text-3xl font-bold mb-8 text-primary">Related Products</h2>
+            </FadeIn>
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            >
               {relatedProducts.map((relatedProduct) => (
-                <ProductCard key={relatedProduct.id} product={relatedProduct} />
+                <motion.div
+                  key={relatedProduct.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                  }}
+                >
+                  <ProductCard product={relatedProduct} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </section>
         )}
       </div>

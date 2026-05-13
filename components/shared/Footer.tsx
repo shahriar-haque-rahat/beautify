@@ -76,34 +76,34 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/products?category=Beauty"
+                  href="/products?category=Skincare"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Beauty
+                  Skincare
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/products?category=Electronics"
+                  href="/products?category=Makeup"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Electronics
+                  Makeup
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/products?category=Home"
+                  href="/products?category=Hair%20%26%20Body%20Care"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Home
+                  Hair &amp; Body Care
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/products?category=Sports"
+                  href="/products?category=Accessories"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Sports
+                  Accessories
                 </Link>
               </li>
             </ul>

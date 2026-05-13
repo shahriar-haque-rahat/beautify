@@ -15,19 +15,25 @@ interface CartContextType {
   addToCart: (item: CartItem) => void
   updateQuantity: (id: string, quantity: number) => void
   removeFromCart: (id: string) => void
+  clearCart: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedCart = localStorage.getItem("cart")
+      return savedCart ? JSON.parse(savedCart) : []
+    }
+    return []
+  })
 
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart")
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart))
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cartItems))
     }
-  }, [])
+  }, [cartItems])
 
   const addToCart = (item: CartItem) => {
     setCartItems((prev) => {
@@ -55,12 +61,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCartItems((prev) => prev.filter((item) => item.id !== id))
   }
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems))
-  }, [cartItems])
+  const clearCart = () => {
+    setCartItems([])
+  }
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   )

@@ -3,6 +3,9 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import Header from "@/components/shared/Header"
 import Footer from "@/components/shared/Footer"
+import InitialSplash from "@/components/shared/InitialSplash"
+import PageTransition from "@/components/shared/PageTransition"
+import { Toaster } from "@/components/ui/sonner"
 import "../styles/globals.css"
 import localFont from 'next/font/local'
 import { WishlistProvider } from "@/providers/WishlistContext"
@@ -56,9 +59,13 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <WishlistProvider>
           <CartProvider>
+            <InitialSplash />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
+            <Toaster richColors position="top-center" />
           </CartProvider>
         </WishlistProvider>
       </body>

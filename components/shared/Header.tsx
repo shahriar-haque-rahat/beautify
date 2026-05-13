@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { usePathname } from "next/navigation" // Added import for usePathname
+import { usePathname, useRouter } from "next/navigation"
 import { Search, ShoppingCart, Heart, User, Menu, X, Contact, Podcast, MenuSquare, ShoppingBag, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,10 +16,18 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState("")
   const { cartItems } = useCart()
   const { wishlistItems } = useWishlist()
-  const pathname = usePathname() // Get current pathname
+  const pathname = usePathname()
+  const router = useRouter()
 
   const cartItemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
   const wishlistItemCount = wishlistItems.length
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = searchQuery.trim()
+    router.push(q ? `/products?search=${encodeURIComponent(q)}` : "/products")
+    setIsMenuOpen(false)
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/50 border-b border-primary/10 shadow-sm">
@@ -71,9 +79,11 @@ export default function Header() {
           </nav>
 
           {/* Search bar - hidden on mobile */}
-          <div className="hidden md:flex flex-1 max-w-md ">
+          <form onSubmit={handleSearchSubmit} className="hidden md:flex flex-1 max-w-md ">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <button type="submit" aria-label="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-primary">
+                <Search className="h-4 w-4" />
+              </button>
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -82,7 +92,7 @@ export default function Header() {
                 className="pl-10 bg-muted/50 border-primary/20 focus:border-primary/40 rounded-full"
               />
             </div>
-          </div>
+          </form>
 
           {/* Right side icons */}
           <div className="flex items-center ">
@@ -153,9 +163,11 @@ export default function Header() {
           </div>
 
           {/* Mobile search */}
-          <div className="md:hidden my-4">
+          <form onSubmit={handleSearchSubmit} className="md:hidden my-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <button type="submit" aria-label="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-primary">
+                <Search className="h-4 w-4" />
+              </button>
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -164,7 +176,7 @@ export default function Header() {
                 className="pl-10 bg-muted/50 border-primary/20 focus:border-primary/40 rounded-full"
               />
             </div>
-          </div>
+          </form>
         </nav>
       </div>
     </header>

@@ -3,6 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Heart, ShoppingCart, X } from "lucide-react"
+import { motion } from "framer-motion"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Product } from "@/data/product.data"
@@ -23,8 +25,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleWishlistToggle = () => {
     if (isInWishlist(product.id)) {
       removeFromWishlist(product.id)
+      toast("Removed from wishlist")
     } else {
       addToWishlist(product)
+      toast("Saved to wishlist")
     }
   }
 
@@ -36,14 +40,17 @@ export default function ProductCard({ product }: ProductCardProps) {
       image: product.images[0] || "/placeholder.svg?height=300&width=300&query=beauty product",
       quantity: 1,
     })
+    toast.success(`${product.title} added to cart`)
   }
 
   return (
-    <div
-      className="group bg-white/90 backdrop-blur-sm rounded-xl border border-border/50 overflow-hidden hover:shadow-xl transition-all duration-300 product-card-hover"
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 280, damping: 22 }}
+      className="group bg-white/90 backdrop-blur-sm rounded-xl border border-border/50 overflow-hidden hover:shadow-xl transition-shadow duration-300 product-card-hover"
     >
       <div className="relative aspect-square overflow-hidden">
-        <Link href={`/products/${product.slug}`}>
+        <Link href={`/products/${product.slug}`} className="absolute inset-0">
           <Image
             src={product.images[0] || "/placeholder.svg?height=300&width=300&query=beauty product"}
             alt={product.title}
@@ -52,14 +59,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </Link>
         {discountPercentage > 0 && (
-          <Badge className="absolute top-3 left-3 sale-badge text-white font-semibold px-3 py-1">
+          <Badge className="absolute top-3 left-3 z-10 sale-badge text-white font-semibold px-3 py-1">
             SALE
           </Badge>
         )}
         <Button
           size="sm"
           variant="secondary"
-          className="absolute top-3 right-3 h-10 w-10 p-0 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
+          className="absolute top-3 right-3 z-10 h-10 w-10 p-0 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-lg"
           onClick={handleWishlistToggle}
         >
           {isInWishlist(product.id) ? (
@@ -104,6 +111,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           Add to Cart
         </Button>
       </section>
-    </div>
+    </motion.div>
   )
 }

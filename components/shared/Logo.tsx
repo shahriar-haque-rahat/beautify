@@ -9,8 +9,9 @@ const Logo = () => {
         <Image
           src={"/logo.avif"}
           alt={"logo"}
-          width={20}
-          height={20}
+          width={40}
+          height={56}
+          className="h-7 w-auto"
         />
         <span>Beautify</span>
       </span>

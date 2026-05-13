@@ -1,10 +1,14 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, User, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { blogs } from "@/data/blog.data"
 import Newsletter from "@/components/shared/Newsletter"
+import FadeIn from "@/components/shared/FadeIn"
 
 export default function BlogsPage() {
   const featuredBlog = blogs[0]
@@ -14,19 +18,29 @@ export default function BlogsPage() {
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       {/* Hero */}
       <div className="hero-gradient py-20">
-        <div className="container mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="container mx-auto px-4 text-center"
+        >
           <h1 className="text-5xl font-extrabold mb-4 text-primary tracking-tight">Blog</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Discover beauty tips, lifestyle advice, and wellness insights
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-4 py-16">
         {/* Featured Blog */}
         {featuredBlog && (
           <section className="mb-20">
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-border/40 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-border/40 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
               <div className="grid lg:grid-cols-2">
                 {/* Image */}
                 <div className="relative aspect-video lg:aspect-square">
@@ -70,18 +84,31 @@ export default function BlogsPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </section>
         )}
 
         {/* Blog Grid */}
         <section>
-          <h2 className="text-3xl font-bold mb-10 text-primary">Latest Articles</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <FadeIn>
+            <h2 className="text-3xl font-bold mb-10 text-primary">Latest Articles</h2>
+          </FadeIn>
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
             {otherBlogs.map((blog) => (
-              <article
+              <motion.article
                 key={blog.id}
-                className="group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/30 shadow-sm hover:shadow-lg transition-all duration-300"
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+                }}
+                whileHover={{ y: -5 }}
+                className="group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/30 shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
                 {/* Thumbnail */}
                 <div className="relative aspect-video overflow-hidden">
@@ -126,9 +153,9 @@ export default function BlogsPage() {
                     </Button>
                   </div>
                 </section>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         <Newsletter />

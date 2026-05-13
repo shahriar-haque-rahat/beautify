@@ -4,6 +4,8 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
+import { motion } from "framer-motion"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -23,19 +25,24 @@ export default function LoginPage() {
     // Simulate login process
     setTimeout(() => {
       if (email === "demo@demo.com" && password === "Demo1234") {
-        // Set auth cookie/session
         document.cookie = "auth=true; path=/"
+        toast.success("Welcome back!")
         window.location.href = "/profile"
       } else {
-        alert("Invalid credentials")
+        toast.error("Invalid email or password")
+        setIsLoading(false)
       }
-      setIsLoading(false)
-    }, 1000)
+    }, 800)
   }
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <div className="max-w-md mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-md mx-auto"
+      >
         <Card>
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Welcome Back</CardTitle>
@@ -85,7 +92,7 @@ export default function LoginPage() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </motion.div>
     </div>
   )
 }

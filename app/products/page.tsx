@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from "react"
 import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import { Search, Filter, Grid, List, ChevronLeft, ChevronRight } from "lucide-react"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -10,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import ProductCard from "@/components/shared/ProductCard"
 import { products } from "@/data/product.data"
+import FadeIn from "@/components/shared/FadeIn"
 
 const PRODUCTS_PER_PAGE = 6
 
@@ -186,14 +188,19 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       <div className="hero-gradient py-16">
-        <div className="container mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="container mx-auto px-4 text-center"
+        >
           <h1 className="text-5xl font-bold mb-4 text-primary">Shop</h1>
           <div className="flex items-center justify-center space-x-2 text-muted-foreground">
             <span>Home</span>
             <span>/</span>
             <span>Shop</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
@@ -257,7 +264,12 @@ export default function ProductsPage() {
         </div>
 
         <div className="flex gap-8">
-          <aside className={`w-64 space-y-6 ${showFilters ? "block" : "hidden"} lg:block`}>
+          <motion.aside
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className={`w-64 space-y-6 ${showFilters ? "block" : "hidden"} lg:block`}
+          >
             <div className="bg-white/80 backdrop-blur-sm rounded-lg p-6 border border-border/50">
               <h3 className="font-semibold mb-4 text-primary text-lg">Categories</h3>
               <div className="space-y-3">
@@ -326,7 +338,7 @@ export default function ProductsPage() {
                 </div>
               </div>
             )}
-          </aside>
+          </motion.aside>
 
           {/* Products Grid */}
           <main className="flex-1">
@@ -340,15 +352,30 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            <div
+            <motion.div
+              key={`page-${currentPage}-${viewMode}-${sortBy}-${selectedCategories.join(",")}-${searchQuery}`}
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.06 } },
+              }}
               className={
                 viewMode === "grid" ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8" : "space-y-6 mb-8"
               }
             >
               {currentProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <motion.div
+                  key={product.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                  }}
+                >
+                  <ProductCard product={product} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {filteredProducts.length === 0 && (
               <div className="text-center py-12">
